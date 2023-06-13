@@ -51,6 +51,10 @@ class UserResource extends Resource
                             ->hiddenOn('edit')
                             ->required()
                             ->visibleOn('create'),
+                        Forms\Components\Select::make('roles')
+                            ->relationship('roles', 'name')
+                            ->multiple()
+                            ->preload(),
                     ])
                     ->columns(2),
             ]);
@@ -64,6 +68,9 @@ class UserResource extends Resource
                     ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('roles.name')
                     ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')

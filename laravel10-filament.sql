@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 13, 2023 at 02:28 PM
+-- Generation Time: Jun 13, 2023 at 03:51 PM
 -- Server version: 5.7.33
 -- PHP Version: 8.2.6
 
@@ -32,16 +32,17 @@ CREATE TABLE `cities` (
   `state_id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `cities`
 --
 
-INSERT INTO `cities` (`id`, `state_id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 1, 'New York', '2023-06-12 23:03:28', '2023-06-12 23:03:28'),
-(2, 2, 'San Francisco', '2023-06-12 23:03:39', '2023-06-12 23:03:39');
+INSERT INTO `cities` (`id`, `state_id`, `name`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 'New York', '2023-06-12 23:03:28', '2023-06-12 23:03:28', NULL),
+(2, 2, 'San Francisco', '2023-06-12 23:03:39', '2023-06-12 23:03:39', NULL);
 
 -- --------------------------------------------------------
 
@@ -54,16 +55,17 @@ CREATE TABLE `countries` (
   `country_code` char(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `countries`
 --
 
-INSERT INTO `countries` (`id`, `country_code`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'US', 'America', '2023-06-12 23:02:31', '2023-06-12 23:02:31'),
-(2, 'UK', 'United Kingdom', '2023-06-12 23:02:42', '2023-06-12 23:02:42');
+INSERT INTO `countries` (`id`, `country_code`, `name`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'US', 'America', '2023-06-12 23:02:31', '2023-06-12 23:02:31', NULL),
+(2, 'UK', 'United Kingdom', '2023-06-12 23:02:42', '2023-06-12 23:02:42', NULL);
 
 -- --------------------------------------------------------
 
@@ -75,16 +77,17 @@ CREATE TABLE `departments` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `departments`
 --
 
-INSERT INTO `departments` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Human Resource', '2023-06-12 23:03:49', '2023-06-12 23:03:49'),
-(2, 'Research & Development', '2023-06-12 23:03:57', '2023-06-12 23:03:57');
+INSERT INTO `departments` (`id`, `name`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Human Resource', '2023-06-12 23:03:49', '2023-06-12 23:03:49', NULL),
+(2, 'Research & Development', '2023-06-12 23:03:57', '2023-06-12 23:03:57', NULL);
 
 -- --------------------------------------------------------
 
@@ -105,16 +108,17 @@ CREATE TABLE `employees` (
   `birth_date` date NOT NULL,
   `date_hired` date NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `employees`
 --
 
-INSERT INTO `employees` (`id`, `country_id`, `state_id`, `city_id`, `department_id`, `first_name`, `last_name`, `address`, `zip_code`, `birth_date`, `date_hired`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 1, 2, 'Bahry', 'Lanckerz', 'Jl. Mawar Melati No. 4', '42253', '1990-06-22', '2023-06-13', '2023-06-12 23:04:49', '2023-06-12 23:04:49'),
-(2, 2, 2, 2, 1, 'Denis', 'Vanetra', 'Jl. Raya Suka Maju No. 12', '42512', '1993-06-10', '2023-06-13', '2023-06-12 23:05:35', '2023-06-12 23:05:35');
+INSERT INTO `employees` (`id`, `country_id`, `state_id`, `city_id`, `department_id`, `first_name`, `last_name`, `address`, `zip_code`, `birth_date`, `date_hired`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 1, 1, 2, 'Bahry', 'Lanckerz', 'Jl. Mawar Melati No. 4', '42253', '1990-06-22', '2023-06-13', '2023-06-12 23:04:49', '2023-06-12 23:04:49', NULL),
+(2, 2, 2, 2, 1, 'Denis', 'Vanetra', 'Jl. Raya Suka Maju No. 12', '42512', '1993-06-10', '2023-06-13', '2023-06-12 23:05:35', '2023-06-12 23:05:35', NULL);
 
 -- --------------------------------------------------------
 
@@ -158,7 +162,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (7, '2023_06_12_134834_create_cities_table', 1),
 (8, '2023_06_12_134854_create_departments_table', 1),
 (9, '2023_06_12_134918_create_employees_table', 1),
-(10, '2023_06_13_093619_create_permission_tables', 2);
+(10, '2023_06_13_093619_create_permission_tables', 2),
+(11, '2023_06_13_154623_add_field_soft_deletes_to_table', 3);
 
 -- --------------------------------------------------------
 
@@ -341,16 +346,17 @@ CREATE TABLE `states` (
   `country_id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `states`
 --
 
-INSERT INTO `states` (`id`, `country_id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Las Vegas', '2023-06-12 23:03:02', '2023-06-12 23:03:02'),
-(2, 2, 'Los Angels', '2023-06-12 23:03:19', '2023-06-12 23:03:19');
+INSERT INTO `states` (`id`, `country_id`, `name`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 'Las Vegas', '2023-06-12 23:03:02', '2023-06-12 23:03:02', NULL),
+(2, 2, 'Los Angels', '2023-06-12 23:03:19', '2023-06-12 23:03:19', NULL);
 
 -- --------------------------------------------------------
 
@@ -366,17 +372,18 @@ CREATE TABLE `users` (
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@gmail.com', '2023-06-13 02:46:43', '$2y$10$p3npxDg3jcCXTwWwYISflO34vK.3wA3GcMR8T.H88Y9oJQEdxkehK', 't9gtdYMcIp2IyZ7jwNIDmH16YwmaVTe7aG290DS9rBNvrr9BZPdcSulBhUrM', '2023-06-13 02:46:43', '2023-06-13 02:46:43'),
-(2, 'User', 'user@gmail.com', '2023-06-13 02:46:44', '$2y$10$Ag6wSSnZTBxa15MEzCUoyeTlBcWdr08OFyoS9v3SUXvWJRAT/Uppq', 'UI31OgNdXcN9ShVxkgbwqsgqHE8AZrUv9i8SbHapZHGulIwxGsJBozu9Og80', '2023-06-13 02:46:44', '2023-06-13 02:46:44'),
-(3, 'Operator', 'operator@gmail.com', NULL, '$2y$10$b2uVtSb35HU737Df04djNuAJzIdzh4Aha6FC5Il1/feB2JO3QiE.a', NULL, '2023-06-13 07:23:33', '2023-06-13 07:23:33');
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Admin', 'admin@gmail.com', '2023-06-13 02:46:43', '$2y$10$p3npxDg3jcCXTwWwYISflO34vK.3wA3GcMR8T.H88Y9oJQEdxkehK', 't9gtdYMcIp2IyZ7jwNIDmH16YwmaVTe7aG290DS9rBNvrr9BZPdcSulBhUrM', '2023-06-13 02:46:43', '2023-06-13 02:46:43', NULL),
+(2, 'User', 'user@gmail.com', '2023-06-13 02:46:44', '$2y$10$Ag6wSSnZTBxa15MEzCUoyeTlBcWdr08OFyoS9v3SUXvWJRAT/Uppq', 'UI31OgNdXcN9ShVxkgbwqsgqHE8AZrUv9i8SbHapZHGulIwxGsJBozu9Og80', '2023-06-13 02:46:44', '2023-06-13 02:46:44', NULL),
+(3, 'Operator', 'operator@gmail.com', NULL, '$2y$10$b2uVtSb35HU737Df04djNuAJzIdzh4Aha6FC5Il1/feB2JO3QiE.a', NULL, '2023-06-13 07:23:33', '2023-06-13 07:23:33', NULL);
 
 --
 -- Indexes for dumped tables
@@ -525,7 +532,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `permissions`

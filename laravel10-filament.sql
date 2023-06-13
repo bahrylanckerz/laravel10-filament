@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 13, 2023 at 09:53 AM
+-- Generation Time: Jun 13, 2023 at 02:28 PM
 -- Server version: 5.7.33
 -- PHP Version: 8.2.6
 
@@ -190,7 +190,8 @@ CREATE TABLE `model_has_roles` (
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (1, 'App\\Models\\User', 1),
-(2, 'App\\Models\\User', 2);
+(2, 'App\\Models\\User', 2),
+(3, 'App\\Models\\User', 3);
 
 -- --------------------------------------------------------
 
@@ -217,6 +218,36 @@ CREATE TABLE `permissions` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `permissions`
+--
+
+INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
+(1, 'View User', 'web', '2023-06-13 03:29:39', '2023-06-13 03:29:39'),
+(2, 'Create User', 'web', '2023-06-13 03:29:56', '2023-06-13 03:29:56'),
+(3, 'Update User', 'web', '2023-06-13 03:30:03', '2023-06-13 03:30:03'),
+(4, 'Delete User', 'web', '2023-06-13 03:30:11', '2023-06-13 03:30:11'),
+(5, 'View Country', 'web', '2023-06-13 03:32:51', '2023-06-13 03:32:51'),
+(6, 'Create Country', 'web', '2023-06-13 03:32:54', '2023-06-13 03:32:54'),
+(7, 'Update Country', 'web', '2023-06-13 03:33:00', '2023-06-13 03:33:00'),
+(8, 'Delete Country', 'web', '2023-06-13 03:33:05', '2023-06-13 03:33:05'),
+(9, 'View State', 'web', '2023-06-13 06:40:39', '2023-06-13 06:40:39'),
+(10, 'Create State', 'web', '2023-06-13 06:40:48', '2023-06-13 06:40:48'),
+(11, 'Update State', 'web', '2023-06-13 06:40:53', '2023-06-13 06:40:53'),
+(12, 'Delete State', 'web', '2023-06-13 06:40:58', '2023-06-13 06:40:58'),
+(13, 'View City', 'web', '2023-06-13 06:41:10', '2023-06-13 06:41:10'),
+(14, 'Create City', 'web', '2023-06-13 06:41:15', '2023-06-13 06:41:15'),
+(15, 'Update City', 'web', '2023-06-13 06:41:20', '2023-06-13 06:41:20'),
+(16, 'Delete City', 'web', '2023-06-13 06:41:25', '2023-06-13 06:41:25'),
+(17, 'View Department', 'web', '2023-06-13 06:41:40', '2023-06-13 06:41:40'),
+(18, 'Create Department', 'web', '2023-06-13 06:41:46', '2023-06-13 06:41:46'),
+(19, 'Update Department', 'web', '2023-06-13 06:41:51', '2023-06-13 06:41:51'),
+(20, 'Delete Department', 'web', '2023-06-13 06:41:56', '2023-06-13 06:41:56'),
+(21, 'View Employee', 'web', '2023-06-13 06:42:08', '2023-06-13 06:42:08'),
+(22, 'Create Employee', 'web', '2023-06-13 06:42:13', '2023-06-13 06:42:13'),
+(23, 'Update Employee', 'web', '2023-06-13 06:42:19', '2023-06-13 06:42:19'),
+(24, 'Delete Employee', 'web', '2023-06-13 06:42:25', '2023-06-13 06:42:25');
 
 -- --------------------------------------------------------
 
@@ -257,7 +288,8 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
 (1, 'Admin', 'web', '2023-06-13 02:46:44', '2023-06-13 02:46:44'),
-(2, 'User', 'web', '2023-06-13 02:46:44', '2023-06-13 02:46:44');
+(2, 'User', 'web', '2023-06-13 02:46:44', '2023-06-13 02:46:44'),
+(3, 'Operator', 'web', '2023-06-13 03:34:00', '2023-06-13 03:34:00');
 
 -- --------------------------------------------------------
 
@@ -269,6 +301,34 @@ CREATE TABLE `role_has_permissions` (
   `permission_id` bigint(20) UNSIGNED NOT NULL,
   `role_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `role_has_permissions`
+--
+
+INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
+(5, 2),
+(6, 2),
+(7, 2),
+(8, 2),
+(9, 2),
+(10, 2),
+(11, 2),
+(12, 2),
+(13, 2),
+(14, 2),
+(15, 2),
+(16, 2),
+(17, 2),
+(18, 2),
+(19, 2),
+(20, 2),
+(21, 2),
+(5, 3),
+(9, 3),
+(13, 3),
+(17, 3),
+(21, 3);
 
 -- --------------------------------------------------------
 
@@ -314,8 +374,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@gmail.com', '2023-06-13 02:46:43', '$2y$10$p3npxDg3jcCXTwWwYISflO34vK.3wA3GcMR8T.H88Y9oJQEdxkehK', '7JbHwmPiz3dW5neLpZONt6UlOSoqHCT04QPgtuReTJ3VBzLelF30SpQ3SStZ', '2023-06-13 02:46:43', '2023-06-13 02:46:43'),
-(2, 'User', 'user@gmail.com', '2023-06-13 02:46:44', '$2y$10$Ag6wSSnZTBxa15MEzCUoyeTlBcWdr08OFyoS9v3SUXvWJRAT/Uppq', 'eKEiNR0YGl', '2023-06-13 02:46:44', '2023-06-13 02:46:44');
+(1, 'Admin', 'admin@gmail.com', '2023-06-13 02:46:43', '$2y$10$p3npxDg3jcCXTwWwYISflO34vK.3wA3GcMR8T.H88Y9oJQEdxkehK', 't9gtdYMcIp2IyZ7jwNIDmH16YwmaVTe7aG290DS9rBNvrr9BZPdcSulBhUrM', '2023-06-13 02:46:43', '2023-06-13 02:46:43'),
+(2, 'User', 'user@gmail.com', '2023-06-13 02:46:44', '$2y$10$Ag6wSSnZTBxa15MEzCUoyeTlBcWdr08OFyoS9v3SUXvWJRAT/Uppq', 'UI31OgNdXcN9ShVxkgbwqsgqHE8AZrUv9i8SbHapZHGulIwxGsJBozu9Og80', '2023-06-13 02:46:44', '2023-06-13 02:46:44'),
+(3, 'Operator', 'operator@gmail.com', NULL, '$2y$10$b2uVtSb35HU737Df04djNuAJzIdzh4Aha6FC5Il1/feB2JO3QiE.a', NULL, '2023-06-13 07:23:33', '2023-06-13 07:23:33');
 
 --
 -- Indexes for dumped tables
@@ -470,7 +531,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -482,7 +543,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `states`
@@ -494,7 +555,7 @@ ALTER TABLE `states`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

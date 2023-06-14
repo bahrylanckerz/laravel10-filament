@@ -13,8 +13,6 @@ class State extends Model
 {
     use HasFactory, HasRoles, SoftDeletes;
 
-    protected $fillable = ['country_id','name'];
-
     /**
      * Get the country that owns the State
      *

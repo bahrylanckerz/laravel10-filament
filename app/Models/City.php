@@ -13,8 +13,6 @@ class City extends Model
 {
     use HasFactory, HasRoles, SoftDeletes;
 
-    protected $fillable = ['state_id','name'];
-
     /**
      * Get the state that owns the City
      *

@@ -12,8 +12,6 @@ class Department extends Model
 {
     use HasFactory, HasRoles, SoftDeletes;
 
-    protected $fillable = ['name'];
-
     /**
      * Get all of the employees for the Department
      *

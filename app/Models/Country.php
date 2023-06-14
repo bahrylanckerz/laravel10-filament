@@ -12,8 +12,6 @@ class Country extends Model
 {
     use HasFactory, HasRoles, SoftDeletes;
 
-    protected $fillable = ['country_code','name'];
-
     /**
      * Get all of the states for the Country
      *
